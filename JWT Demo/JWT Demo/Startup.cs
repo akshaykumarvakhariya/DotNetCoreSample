@@ -57,20 +57,9 @@ namespace JWT_Demo
                     ValidAudience = issuer,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
                 };
-
                 options.RequireHttpsMetadata = false;
                 options.SaveToken = true;
-                //x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-                //{
-                //    ValidateIssuerSigningKey = true,
-                //    ValidateIssuer = true,
-                //    ValidateAudience = true,
-                //    ValidateLifetime = true,
-                //    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key))
-                //};
             });
-
-          
 
             services.AddSwaggerGen(c =>
             {
