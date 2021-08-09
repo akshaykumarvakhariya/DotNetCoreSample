@@ -38,7 +38,7 @@ namespace JWT_Demo
             var key = Configuration["Jwt:Key"];
             var issuer = Configuration["Jwt:Issuer"];
             services.AddSingleton<IJwtAuth>(new Auth(key, issuer));
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -57,7 +57,6 @@ namespace JWT_Demo
                     ValidAudience = issuer,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
                 };
-                options.RequireHttpsMetadata = false;
                 options.SaveToken = true;
             });
 
