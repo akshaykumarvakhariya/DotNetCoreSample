@@ -18,10 +18,10 @@ namespace JWT_Demo.Controllers
 
         private readonly List<Member> lstMember = new List<Member>()
         {
-            new Member{Id=1, Name="Akshay" },
-            new Member {Id=2, Name="Rahul" },
-            new Member{Id=3, Name="Ankit" },
-            new Member{Id=3, Name="Nikhil"}
+            new Member{Id=1, Name="Akshay", City = "Bharuch"},
+            new Member {Id=2, Name="Rahul", City = "Vadodara" },
+            new Member {Id=3, Name="Ankit", City = "Vadodara"},
+            new Member {Id=4, Name="Nikhil", City = "Ahmedabad"}
         };
         public MemberController(IJwtAuth jwtAuth)
         {
@@ -49,7 +49,9 @@ namespace JWT_Demo.Controllers
         {
             var token = jwtAuth.Authentication(userCredential.UserName, userCredential.Password);
             if (token == null)
+            {
                 return Unauthorized();
+            }
             return Ok(token);
         }
     }

@@ -22,7 +22,7 @@ namespace JWT_Demo.Account
         }
         public string Authentication(string username, string password)
         {
-            if (!(username.Equals(this.username) || password.Equals(this.password)))
+            if (!(username.Equals(this.username) && password.Equals(this.password)))
             {
                 return null;
             }
@@ -39,7 +39,8 @@ namespace JWT_Demo.Account
                 Subject = new ClaimsIdentity(
                     new Claim[]
                     {
-                        new Claim(ClaimTypes.Name, username)
+                        new Claim(ClaimTypes.NameIdentifier, username),
+                        new Claim(ClaimTypes.Email, "akshay@yahoo.com")                        
                     }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 Issuer = issuer,

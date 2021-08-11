@@ -45,9 +45,9 @@ namespace JWT_Demo
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer(options =>
+            .AddJwtBearer(configOption =>
             {
-                options.TokenValidationParameters = new TokenValidationParameters
+                configOption.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
@@ -57,7 +57,7 @@ namespace JWT_Demo
                     ValidAudience = issuer,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
                 };
-                options.SaveToken = true;
+                configOption.SaveToken = true;
             });
 
             services.AddSwaggerGen(c =>
