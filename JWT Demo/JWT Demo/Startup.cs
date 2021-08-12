@@ -57,7 +57,6 @@ namespace JWT_Demo
                     ValidAudience = issuer,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
                 };
-                configOption.SaveToken = true;
             });
 
             services.AddSwaggerGen(c =>
